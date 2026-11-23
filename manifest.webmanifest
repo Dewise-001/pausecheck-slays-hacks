@@ -1,0 +1,13 @@
+{
+  "name": "PauseCheck — Stop, Check, Verify",
+  "short_name": "PauseCheck",
+  "description": "Private, explainable message-safety screening that runs on this device.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f0e7",
+  "theme_color": "#10271f",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

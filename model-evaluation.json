@@ -1,0 +1,45 @@
+{
+  "dataset": "UCI SMS Spam Collection",
+  "datasetUrl": "https://archive.ics.uci.edu/ml/datasets/sms+spam+collection",
+  "datasetLicense": "CC BY 4.0",
+  "datasetCitation": "Almeida, T. & Hidalgo, J. (2011). SMS Spam Collection [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5CC84.",
+  "datasetRowsPublished": 5574,
+  "uniqueRowsUsed": 5159,
+  "conflictingTextGroupsRemoved": 0,
+  "deduplication": "case-insensitive Unicode casefold and whitespace normalization; ambiguous cross-label text groups dropped before splitting",
+  "splitSeed": 2026,
+  "split": {
+    "train": 3610,
+    "validation": 773,
+    "test": 776
+  },
+  "classCountsTrain": {
+    "ham": 3161,
+    "spam": 449
+  },
+  "featureCount": 9571,
+  "tokenization": "lowercase Unicode word tokens and adjacent word bigrams",
+  "model": "multinomial Naive Bayes with additive alpha=0.5; spam-vs-ham log-likelihood-ratio score",
+  "validationThreshold": 2.752737,
+  "validationBorderlineMarginP20": 13.374171,
+  "testMetrics": {
+    "samples": 776,
+    "threshold": 2.752737,
+    "accuracy": 0.987113,
+    "precision": 1.0,
+    "recall": 0.896907,
+    "specificity": 1.0,
+    "f1": 0.945652,
+    "confusion": {
+      "truePositive": 87,
+      "falsePositive": 0,
+      "trueNegative": 679,
+      "falseNegative": 10
+    }
+  },
+  "limitations": [
+    "The UCI dataset combines older English-language spam and legitimate messages from UK and Singapore-related sources; it is not a current Nigerian scam corpus.",
+    "Held-out results reflect this small corpus and do not estimate real-world safety or coverage of new scams.",
+    "A no-spam-pattern result is not proof a message is safe."
+  ]
+}

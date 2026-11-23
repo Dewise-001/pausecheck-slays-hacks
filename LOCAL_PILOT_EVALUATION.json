@@ -1,0 +1,65 @@
+{
+  "title": "NaijaScamBench v0 constructed-example exploratory stress test",
+  "dataset": "Eterniti/Xvimo team, NaijaScamBench v0",
+  "datasetCard": "https://huggingface.co/datasets/Eterniti/NaijaScamBench",
+  "datasetLicense": "CC BY 4.0",
+  "datasetRevision": "558fcb62602b8421733381fbfedcc61167398d12",
+  "datasetFile": "naijascambench_v0.csv",
+  "datasetFileSha256": "bac021051086d464385b01cce874bbf249610d44a5bd21e359fd48fb39711a9d",
+  "allDatasetRows": 180,
+  "excludedUciSourcedRows": 45,
+  "excludedRowsReason": "The model was trained on the UCI SMS Spam Collection; these UCI-sourced rows are excluded to avoid overlap.",
+  "constructedExamplesEvaluated": 135,
+  "constructedExampleLabelCounts": {
+    "scam": 49,
+    "legit": 86
+  },
+  "evaluation": "Frozen model as delivered by the local app; predictions read from the browser UI; no retraining or threshold adjustment.",
+  "results": {
+    "n": 135,
+    "matchedLabels": 71,
+    "accuracy": 0.525926,
+    "spamPrecision": 0.368421,
+    "spamRecall": 0.428571,
+    "specificity": 0.581395,
+    "spamF1": 0.396226,
+    "confusion": {
+      "truePositive": 21,
+      "falsePositive": 36,
+      "trueNegative": 50,
+      "falseNegative": 28
+    },
+    "constructedLanguageLabelCounts": {
+      "english": {
+        "legit": 73,
+        "scam": 37
+      },
+      "hausa": {
+        "legit": 2,
+        "scam": 2
+      },
+      "igbo": {
+        "legit": 2,
+        "scam": 2
+      },
+      "mixed": {
+        "scam": 1
+      },
+      "pidgin": {
+        "legit": 7,
+        "scam": 5
+      },
+      "yoruba": {
+        "legit": 2,
+        "scam": 2
+      }
+    }
+  },
+  "limitations": [
+    "This is a small constructed-example stress test, not real-world Nigerian validation.",
+    "The dataset card says most evaluated examples were constructed by the Xvimo team and that local-language examples have not been reviewed by native speakers.",
+    "Language groups are too small to support language-specific performance claims.",
+    "The test does not assess the separate rule-based warning flags, user behavior, or protection from financial loss.",
+    "Do not use these results as a real-world estimate or safety guarantee."
+  ]
+}

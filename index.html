@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10271f">
+  <meta name="description" content="PauseCheck screens a suspicious message locally and explains possible warning signs. A pattern check, not a verdict.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <title>PauseCheck — stop, check, verify</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="PauseCheck home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3 27 7v8c0 7-4.7 11.5-11 14C9.7 26.5 5 22 5 15V7l11-4Z"/><path d="m11 16 3.2 3.1L21.5 12"/></svg></span>
+        <span>PAUSE<span>CHECK</span></span>
+      </a>
+      <div class="top-right"><span class="local-pill"><i></i> OFFLINE BY DESIGN</span><a href="#how-it-works" class="top-link">HOW IT WORKS <b>↓</b></a></div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>FIELD NOTE 01</span><i></i> MESSAGE SAFETY, WITHOUT THE UPLOAD</p>
+          <h1>PAUSE BEFORE<br>YOU <em>PAY.</em></h1>
+          <p class="hero-intro">Paste a suspicious text. PauseCheck checks for spam-like wording and highlights practical warning signs—right here in your browser.</p>
+          <div class="hero-points"><span><b>01</b> LOCAL TEXT CHECK</span><span><b>02</b> EXPLAINABLE FLAGS</span><span><b>03</b> OFFICIAL SAFETY STEPS</span></div>
+        </div>
+        <aside class="hero-card">
+          <div class="hero-card-top"><span>YOUR MESSAGE</span><span class="lock-mark" aria-label="kept on this device">⌑ <b>ON THIS DEVICE</b></span></div>
+          <div class="flow-art" aria-hidden="true"><div class="msg-icon">Aa</div><div class="flow-line"><i></i><i></i><i></i></div><div class="shield-icon"><svg viewBox="0 0 32 32"><path d="M16 3 27 7v8c0 7-4.7 11.5-11 14C9.7 26.5 5 22 5 15V7l11-4Z"/><path d="m11 16 3.2 3.1L21.5 12"/></svg></div><div class="flow-caption">CHECKED LOCALLY · NEVER UPLOADED</div></div>
+          <p><strong>A pattern check, not a verdict.</strong><br>PauseCheck cannot prove a message is genuine or fraudulent. If something feels off, verify it using contact details you find independently.</p>
+        </aside>
+      </section>
+
+      <section class="main-grid" aria-label="Message safety checker">
+        <section class="analyzer-card">
+          <div class="card-heading"><div><p class="section-kicker"><span>01</span> QUICK SCREEN</p><h2>What did the message say?</h2></div><span class="five-minute">NO ACCOUNT NEEDED</span></div>
+          <label class="sr-only" for="messageInput">Suspicious message text</label>
+          <textarea id="messageInput" maxlength="5000" spellcheck="false" placeholder="Paste an SMS, WhatsApp forward, or short email here…" aria-describedby="privacyNote"></textarea>
+          <div class="input-meta"><span id="privacyNote"><span class="privacy-icon">●</span> Your text stays in this tab. It is not saved or sent.</span><span id="charCount">0 / 5000</span></div>
+          <div class="example-row"><span>TRY A SAMPLE</span><button type="button" class="sample-button" data-sample="grant">GRANT + OTP <b>↘</b></button><button type="button" class="sample-button" data-sample="ordinary">ORDINARY NOTE <b>↘</b></button></div>
+          <div class="analyzer-actions"><button type="button" class="button button-primary" id="checkButton"><span class="button-shield">✓</span> CHECK THIS MESSAGE <span>↗</span></button><button type="button" class="button button-quiet" id="clearButton">CLEAR</button></div>
+          <p class="demo-note hidden" id="sampleNote"><b>FICTIONAL EXAMPLE</b><span>This sample is illustrative and is not a real message or part of the training corpus.</span></p>
+          <p class="form-error hidden" id="formError" role="status"></p>
+        </section>
+
+        <section class="result-card" id="resultCard" aria-live="polite" aria-atomic="true">
+          <div class="result-top"><p class="section-kicker"><span>02</span> YOUR SCREENING</p><span class="model-ready" id="modelStatus"><i></i> LOADING LOCAL MODEL</span></div>
+          <div id="emptyResult" class="empty-result"><div class="scan-symbol" aria-hidden="true"><span></span><i></i><b></b></div><h2>Ready when<br>you are.</h2><p>Your message is analyzed in this browser. Nothing is uploaded or stored as a scan history.</p><div class="privacy-stamp"><span>PRIVATE BY DESIGN</span><span>MODEL V1.0</span></div></div>
+          <div id="scanResult" class="scan-result hidden">
+            <div class="result-label-row"><span class="result-label" id="resultLabel">PAUSE & VERIFY</span><span class="result-strength" id="resultStrength">MODEL SIGNAL</span></div>
+            <h2 id="resultTitle">Check before you act.</h2>
+            <p id="resultSummary" class="result-summary"></p>
+            <div class="signal-meter" id="signalMeter" role="img" aria-label="Relative spam-like wording signal"><span class="meter-low">NO STRONG MATCH</span><span class="meter-mid">CHECK</span><span class="meter-high">SPAM-LIKE</span><i id="meterMarker"></i></div>
+            <div class="evidence-block"><div class="evidence-heading"><span>MODEL EVIDENCE</span><span id="evidenceLabel"></span></div><div id="modelEvidence" class="evidence-chips"></div><p class="small-caveat">Words that influence a text model are clues, not proof. It can miss new or local scams.</p></div>
+            <div class="flags-block"><div class="evidence-heading"><span>MESSAGE CLUES</span><span>RULE-BASED CHECKS</span></div><div id="warningFlags" class="flag-list"></div></div>
+            <div class="next-step" id="nextStep"><span class="next-icon">!</span><div><strong>Before you respond</strong><p id="nextStepText">Verify the request through an official contact you find yourself. Never share an OTP, PIN, or password in response to a message.</p></div></div>
+            <p class="result-disclaimer">A “no strong match” result does <b>not</b> mean the message is safe.</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="safe-strip" aria-label="Three safe steps"><div class="safe-intro"><p class="section-kicker"><span>03</span> IF YOU'RE UNSURE</p><h2>Stop.<br>Check.<br><em>Verify.</em></h2></div><div class="safe-step"><span>01</span><h3>Don’t tap the surprise link.</h3><p>Open the organisation’s official app or website yourself instead.</p></div><div class="safe-step"><span>02</span><h3>Don’t share access codes.</h3><p>Never send an OTP, PIN, password or card security code to a caller or message sender.</p></div><div class="safe-step"><span>03</span><h3>Check with a trusted source.</h3><p>Use a phone number or contact you already know—not details inside the message.</p></div></section>
+
+      <section class="how-section" id="how-it-works">
+        <div class="how-intro"><p class="section-kicker"><span>04</span> HOW PAUSECHECK WORKS</p><h2>A small model.<br>Clear limits.</h2><p>A supervised text classifier screens for wording patterns that appeared in a public SMS dataset. Separate, visible checks highlight links, urgency and requests for sensitive information.</p></div>
+        <div class="how-card">
+          <div class="how-row"><span class="how-number">A</span><div><h3>Learned from labeled examples</h3><p>A Multinomial Naive Bayes model uses word and adjacent-word features. It returns a spam-vs-ham log-likelihood signal; it is not a calibrated probability.</p></div></div>
+          <div class="how-row"><span class="how-number">B</span><div><h3>Explain what contributed</h3><p>The app can show message terms that pushed the model’s score toward or away from its held-out-data threshold.</p></div></div>
+          <div class="how-row"><span class="how-number">C</span><div><h3>Keep the message on-device</h3><p>The JavaScript reads your text in memory. The app does not make a server-side AI call, save a scan history, resolve links, or contact a sender.</p></div></div>
+          <details class="model-details"><summary><span>MODEL CARD &amp; TEST RESULTS</span><b>＋</b></summary><div class="model-details-body" id="modelDetailsBody"><p>The model uses the UCI SMS Spam Collection, a public 5,574-message corpus combining older English-language messages from UK and Singapore-related sources. It is <b>not</b> a Nigerian scam dataset and has not been evaluated on real Nigerian messages. It may not recognize new, local-language or context-dependent scams.</p><p>On a seeded stratified holdout (776 messages; 15% test split), the trained screening threshold achieved <b>98.7% accuracy</b>, <b>100% precision</b> and <b>89.7% recall</b> for the corpus’s spam label. This does not measure real-world scam detection in Nigeria. A message classified as ordinary may still be fraudulent.</p><p><b>Exploratory stress test, not validation:</b> on 135 constructed Nigerian-context examples from <a href="https://huggingface.co/datasets/Eterniti/NaijaScamBench" target="_blank" rel="noreferrer">NaijaScamBench v0</a>, the frozen model matched 71 labels (52.6%). It matched 21 of 49 scam examples (42.9% recall), missed 28, and flagged 36 of 86 legitimate examples. Its 45 UCI-sourced examples were excluded to avoid overlap with training. The dataset is small and constructed; its local-language examples have not been reviewed by native speakers. This is not evidence of real-world Nigerian performance, and you should not rely on this model to decide whether a message is safe.</p><p>Model: Multinomial Naive Bayes; 9,571 word-unigram and adjacent-word-bigram features; additive smoothing α=0.5. The threshold was selected on a separate 15% validation split; the final UCI metrics are from the untouched test split. Exact split counts and confusion matrix are in <code>model-evaluation.json</code>; the small exploratory result is in <code>LOCAL_PILOT_EVALUATION.json</code>.</p><p>Training data attribution: Almeida &amp; Hidalgo, <a href="https://doi.org/10.24432/C5CC84" target="_blank" rel="noreferrer">UCI SMS Spam Collection</a>, CC BY 4.0. The application package contains the learned parameters and aggregate reports, not raw SMS messages.</p></div></details>
+        </div>
+      </section>
+
+      <section class="sources-section">
+        <div><p class="section-kicker"><span>05</span> TRUSTED NEXT STEPS</p><h2>Advice from<br>official sources.</h2></div>
+        <a class="source-link" href="https://cert.gov.ng/advisories/increase-in-phishing-campaigns-within-the-nigerian-cyberspace" target="_blank" rel="noreferrer"><span class="source-type">NIGERIA CERT · ADVISORY</span><strong>Phishing campaigns in Nigeria’s cyberspace</strong><span class="source-desc">Verify claims of support schemes and avoid unexpected links or requests for personal and financial information.</span><b class="source-arrow">↗</b></a>
+        <a class="source-link" href="https://www.cbn.gov.ng/supervision/cpdfraudandscam.html" target="_blank" rel="noreferrer"><span class="source-type">CENTRAL BANK OF NIGERIA</span><strong>Fraud and scam awareness</strong><span class="source-desc">Don’t click suspicious links; verify senders by contacting the organisation directly.</span><b class="source-arrow">↗</b></a>
+      </section>
+    </main>
+
+    <footer class="footer"><a class="brand footer-brand" href="#top"><span class="brand-mark small" aria-hidden="true">✓</span><span>PAUSE<span>CHECK</span></span></a><span>STOP · CHECK · VERIFY</span><span>STANDALONE REVIEW BUILD · V1.0</span></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
